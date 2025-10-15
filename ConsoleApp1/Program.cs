@@ -274,5 +274,74 @@ public class UniversityManagement
     }
 }
 
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        var management = new UniversityManagement();
 
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine("Система управления университетом");
+            Console.WriteLine("1. Показать всех студентов");
+            Console.WriteLine("2. Показать всех преподавателей");
+            Console.WriteLine("3. Показать все курсы");
+            Console.WriteLine("4. Выход");
+            Console.Write("Выберите опцию: ");
+
+            var choice = Console.ReadLine();
+            switch (choice)
+            {
+                case "1":
+                    ShowAllStudents(management);
+                    break;
+                case "2":
+                    ShowAllTeachers(management);
+                    break;
+                case "3":
+                    ShowAllCourses(management);
+                    break;
+                case "4":
+                    return;
+                default:
+                    Console.WriteLine("Неверный выбор.");
+                    break;
+            }
+            Console.WriteLine("\nНажмите любую клавишу для продолжения");
+            Console.ReadKey();
+        }
+    }
+
+    private static void ShowAllStudents(UniversityManagement management)
+    {
+        var students = management.GetAllStudents();
+        Console.WriteLine("\nСписок всех студентов:");
+        foreach (var student in students)
+        {
+            Console.WriteLine(student.GetInfo());
+        }
+    }
+
+    private static void ShowAllTeachers(UniversityManagement management)
+    {
+        var teachers = management.GetAllTeachers();
+        Console.WriteLine("\nСписок всех преподавателей:");
+        foreach (var teacher in teachers)
+        {
+            Console.WriteLine(teacher.GetInfo());
+        }
+    }
+
+    private static void ShowAllCourses(UniversityManagement management)
+    {
+        var courses = management.GetAllCourses();
+        Console.WriteLine("\nСписок всех курсов:");
+        foreach (var course in courses)
+        {
+            Console.WriteLine(course.GetInfo());
+            Console.WriteLine();
+        }
+    }
+}
 
