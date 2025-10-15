@@ -27,5 +27,5 @@ public abstract class Person
     {
         return $"ID: {_id}, Имя: {_name}, Возраст: {_age}";
     }
-}
+
 
